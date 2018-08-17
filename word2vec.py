@@ -380,7 +380,7 @@ def main(_):
     for _ in xrange(opts.epochs_to_train):
       model.train()  # Process one epoch\
     E = session.run(model._emb)
-    np.savetxt(os.path.join(opts.save_path, 'embedings_final.txt', E))
+    np.savetxt(os.path.join(opts.save_path, 'embedings_final.txt'), E)
     # Perform a final save.
     model.saver.save(session,
                      os.path.join(opts.save_path, "model.ckpt"),
