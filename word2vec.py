@@ -282,8 +282,10 @@ class Word2Vec(object):
     self._examples = examples
     self._labels = labels
     self._id2word = opts.vocab_words
-    for i, w in enumerate(self._id2word):
-      self._word2id[w] = i
+    with open(os.path.join(opts.save_path, 'id2word.txt'), 'w+') as f:
+        for i, w in enumerate(self._id2word):
+          f.write(f"{i} {w}\n")
+          self._word2id[w] = i
     true_logits, sampled_logits = self.forward(examples, labels)
     loss = self.nce_loss(true_logits, sampled_logits)
     tf.summary.scalar("NCE loss", loss)
