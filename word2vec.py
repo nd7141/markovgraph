@@ -368,7 +368,7 @@ def _start_shell(local_ns=None):
 
 def main(_):
   """Train a word2vec model."""
-  if not FLAGS.train_data or not FLAGS.eval_data or not FLAGS.save_path:
+  if not FLAGS.train_data or not FLAGS.save_path:
     print("--train_data --eval_data and --save_path must be specified.")
     sys.exit(1)
   opts = Options()
